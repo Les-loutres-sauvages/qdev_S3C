@@ -1,0 +1,27 @@
+@startuml
+
+!theme plain
+top to bottom direction
+skinparam linetype polyline
+
+class Etudiant {
+  + Etudiant(): 
+  - id: Identite
+  - formation: Formation
+  - resultats: Map<String, Collection<String>>
+}
+class Formation {
+  + Formation(): 
+  - matieres: Map<String, Double>
+  - id: int
+}
+class Identite {
+  + Identite(): 
+  - nom: String
+  - prenom: String
+  - nip: String
+}
+
+Etudiant  "1" *-[#595959,plain]-> "formation\n1" Formation 
+Etudiant  "1" *-[#595959,plain]-> "id\n1" Identite  
+@enduml
