@@ -78,6 +78,26 @@ public class Etudiant {
         return somme / notes.size();
     }
 
+    /**
+     * Méthode pour obtenir la moyenne générale de l'étudiant
+     *
+     * @return La moyenne générale de l'étudiant
+     */
+    public double getMoyenneGenerale() {
+        double somme = 0;
+        int count = 0;
+
+        for (Map.Entry<String, Collection<Double>> entry : resultats.entrySet()) {
+            Collection<Double> notes = entry.getValue();
+
+            for (Double note : notes) {
+                somme += note;
+                count++;
+            }
+        }
+
+        return somme / count;
+    }
 
     public Identite getIdentite() {
         return nip;
