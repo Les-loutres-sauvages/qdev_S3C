@@ -28,6 +28,12 @@ public class Formation {
         this.matieres.remove(mat);
     }
 
+    /**
+     * Récupère le coefficient de la matière
+     * @param mat La matière
+     * @return Le coefficient de la matière
+     * @throws Exception Si la matière n'existe pas
+     */
     public Double getCoef(String mat) throws Exception{
         Double matiere = this.matieres.get(mat);
         if  (matiere == null){
@@ -36,6 +42,11 @@ public class Formation {
             return matiere;
     }
 
+    /**
+     * Vérifie si la matière existe
+     * @param mat La matière
+     * @return true si la matière existe, false sinon
+     */
     public boolean matiereExist(String mat){
         return matieres.containsKey(mat);
     }
