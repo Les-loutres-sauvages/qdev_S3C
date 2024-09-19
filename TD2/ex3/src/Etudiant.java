@@ -60,7 +60,7 @@ public class Etudiant {
      * @param m Matière
      * @return La moyenne des notes de l'étudiant dans la matière donnée
      */
-    public double getMoyenne(String m) {
+    public double getMoyenne(String m) throws Exception {
         Collection<Double> notes = resultats.get(m.toLowerCase());
 
         if(!formation.matiereExist(m.toLowerCase())) {
@@ -75,7 +75,7 @@ public class Etudiant {
         for (Double note : notes) {
             somme += note;
         }
-        return somme / notes.size();
+        return (somme / notes.size());
     }
 
     /**
@@ -84,19 +84,18 @@ public class Etudiant {
      * @return La moyenne générale de l'étudiant
      */
     public double getMoyenneGenerale() {
-        double somme = 0;
-        int count = 0;
+        double res = 0;
+        double div = 0;
 
         for (Map.Entry<String, Collection<Double>> entry : resultats.entrySet()) {
-            Collection<Double> notes = entry.getValue();
-
-            for (Double note : notes) {
-                somme += note;
-                count++;
+            try {
+                res += getMoyenne(entry.getKey()) * formation.getCoef(entry.getKey());
+                div += formation.getCoef(entry.getKey());
+            } catch (Exception e) {
+                e.printStackTrace();
             }
         }
-
-        return somme / count;
+        return res / div;
     }
 
     public Identite getIdentite() {
