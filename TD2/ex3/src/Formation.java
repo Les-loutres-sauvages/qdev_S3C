@@ -1,3 +1,4 @@
+import java.util.HashMap;
 import java.util.Map;
 
 public class Formation {
@@ -11,6 +12,15 @@ public class Formation {
      */
     private Map<String, Double> matieres;
 
+    public Formation(int id, Map<String, Double> matieres) {
+        this.id = id;
+        this.matieres = matieres;
+    }
+
+    public Formation(int id) {
+        this.id = id;
+        this.matieres = new HashMap<String, Double>();
+    }
     /**
      * Ajoute la matière à la formation
      * @param mat La matière à ajouter
