@@ -5,16 +5,22 @@ import java.util.Map;
 
 public class Etudiant {
 
-    private Identite id;
+    /**
+     * Numéro d’Identification Personnel
+     */
+    private Identite nip;
     private Formation formation;
     private Map<String, Collection<Double>> resultats;
 
     /**
-     * @param id Identité de l'étudiant
+     * @param nip Identité de l'étudiant
      * @param formation Formation de l'étudiant
      */
-    public Etudiant(Identite id, Formation formation) {
-        this.id = id;
+    public Etudiant(Identite nip, Formation formation) {
+        /**
+         * Numéro d’Identification Personnel
+         */
+        this.nip = nip;
         this.formation = formation;
         this.resultats = new HashMap<>();
     }
@@ -52,7 +58,7 @@ public class Etudiant {
 
 
     public Identite getIdentite() {
-        return id;
+        return nip;
     }
 
     public Formation getFormation() {
