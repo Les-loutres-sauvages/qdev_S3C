@@ -42,11 +42,9 @@ public class Etudiant {
      * @param n Note
      */
     public void addNote(String m, double n) {
-        /*
-        if(!formation.getMatieres().contains(m.toLowerCase())) {
+        if(!formation.matiereExist(m.toLowerCase())) {
             throw new IllegalArgumentException("La matière " + m + " n'est pas dans la formation.");
         }
-        */
 
         if(n < 0 || n > 20) {
             throw new IllegalArgumentException("La note doit être comprise entre 0 et 20. (actual: " + n + ")");
@@ -54,6 +52,30 @@ public class Etudiant {
 
         resultats.computeIfAbsent(m.toLowerCase(), k -> new ArrayList<>()).add(n);
         resultats.get(m.toLowerCase()).add(n);
+    }
+
+    /**
+     * Méthode pour obtenir la moyenne des notes d'un étudiant dans une matière donnée
+     *
+     * @param m Matière
+     * @return La moyenne des notes de l'étudiant dans la matière donnée
+     */
+    public double getMoyenne(String m) {
+        Collection<Double> notes = resultats.get(m.toLowerCase());
+
+        if(!formation.matiereExist(m.toLowerCase())) {
+            throw new IllegalArgumentException("La matière " + m + " n'est pas dans la formation.");
+        }
+
+        if (notes == null || notes.isEmpty()) {
+            throw new IllegalArgumentException("Aucune note pour la matière " + m);
+        }
+
+        double somme = 0;
+        for (Double note : notes) {
+            somme += note;
+        }
+        return somme / notes.size();
     }
 
 

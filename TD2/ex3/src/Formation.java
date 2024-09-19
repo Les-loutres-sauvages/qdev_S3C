@@ -17,7 +17,7 @@ public class Formation {
      * @param coef Le coefficient de la matière
      */
     public void ajouter(String mat, Double coef){
-        this.matieres.put(mat, coef);
+        this.matieres.put(mat.toLowerCase(), coef);
     }
 
     /**
@@ -34,6 +34,10 @@ public class Formation {
             throw new IllegalAccessException("La matière n'existe pas");
         } else
             return matiere;
+    }
+
+    public boolean matiereExist(String mat){
+        return matieres.containsKey(mat);
     }
 
 }
