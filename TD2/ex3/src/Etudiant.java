@@ -3,7 +3,7 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Etudiant {
+public class Etudiant implements Comparable{
 
     /**
      * Numéro d’Identification Personnel
@@ -114,4 +114,11 @@ public class Etudiant {
     public String toString() {
         return "Etudiant (" + nip.getNip() + ")";
     }
+
+    @Override
+    public int compareTo(Object o) {
+        Etudiant etu2 = (Etudiant) o;
+        return this.nip.getNom().compareTo(etu2.nip.getNom());
+    }
+
 }

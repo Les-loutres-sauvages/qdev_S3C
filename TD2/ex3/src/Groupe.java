@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.Map;
 
 public class Groupe {
@@ -9,7 +10,7 @@ public class Groupe {
 
     public Groupe(Formation f) {
         this.formation = f;
-        this.groupe = new ArrayList<>();
+        this.groupe = new ArrayList<Etudiant>();
     }
 
     public void ajouter(Etudiant e) {
@@ -31,4 +32,16 @@ public class Groupe {
         }
         return res;
     }
+
+    /**
+     * c. Ajouter dans la classe Groupe,
+     * - la méthode triAlpha qui permet de trier la liste des étudiants du groupe selon l'ordre
+     * alphabétique de leur nom (de A vers Z).
+     * - la méthode triAntiAlpha qui permet de trier la liste des étudiants du groupe dans
+     * l'ordre inverse de l'ordre alphabétique (de Z vers A).
+
+    public void triAlpha(){
+        Collections.sort(groupe);
+    }
+     */
 }
