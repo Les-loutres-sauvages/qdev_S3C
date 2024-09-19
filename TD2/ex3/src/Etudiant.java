@@ -110,4 +110,8 @@ public class Etudiant {
     public Map<String, Collection<Double>> getResultats() {
         return resultats;
     }
+
+    public String toString() {
+        return "Etudiant (" + nip.getNip() + ")";
+    }
 }

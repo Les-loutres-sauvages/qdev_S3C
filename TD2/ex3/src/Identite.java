@@ -1,5 +1,3 @@
-
-
 public class Identite {
 
     private final String nip, nom, prenom;
