@@ -9,13 +9,16 @@ public class EtudiantTest {
 
     @BeforeEach
     public void setUp() {
-        form = new Formation();
+        form = new Formation(1);
         form.ajouter("Math", 2.0);
         form.ajouter("Francais", 1.0);
-        etu = new Etudiant("100", "Dupont", "Michel", new Formation());
+
+        etu = new Etudiant("100", "Dupont", "Michel", form);
         etu.addNote("math", 20);
         etu.addNote("francais", 12);
         etu.addNote("francais", 8);
+        // fr a donc une moyenne de 10 et compte coef 1
+        // math a donc une moyenne de 20 et compte coef 2
     }
 
     /**
@@ -23,7 +26,7 @@ public class EtudiantTest {
      */
     @Test
     public void test_moyenne_gen() {
-        assertEquals(etu.getMoyenneGeneral, 10);
+        assertEquals(etu.getMoyenneGenerale(), 10);
     }
 
     /**
