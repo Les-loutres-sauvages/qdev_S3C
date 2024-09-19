@@ -24,8 +24,6 @@ public class EtudiantTest {
 
         // fr a donc une moyenne de 10 et compte coef 1
         // math a donc une moyenne de 20 et compte coef 3
-
-
     }
 
     /**
