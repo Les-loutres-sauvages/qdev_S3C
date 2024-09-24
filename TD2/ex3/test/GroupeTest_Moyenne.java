@@ -3,7 +3,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class GroupeTest {
+public class GroupeTest_Moyenne {
     Groupe groupe;
     Formation form;
     Etudiant etu1, etu2;
