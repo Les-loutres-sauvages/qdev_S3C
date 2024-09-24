@@ -3,7 +3,7 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Etudiant {
+public class Etudiant implements Comparable {
 
     /**
      * Numéro d’Identification Personnel
@@ -13,7 +13,7 @@ public class Etudiant {
     private Map<String, Collection<Double>> resultats;
 
     /**
-     * @param nip Identité de l'étudiant
+     * @param nip       Identité de l'étudiant
      * @param formation Formation de l'étudiant
      */
     public Etudiant(Identite nip, Formation formation) {
@@ -27,9 +27,9 @@ public class Etudiant {
 
     /**
      * @param nip NIP (Numéro d’Identification Personnel)
-     * @param n Nom
-     * @param p Prénom
-     * @param f Formation de l'étudiant
+     * @param n   Nom
+     * @param p   Prénom
+     * @param f   Formation de l'étudiant
      */
     public Etudiant(String nip, String n, String p, Formation f) {
         this(new Identite(nip, n, p), f);
@@ -42,11 +42,11 @@ public class Etudiant {
      * @param n Note
      */
     public void addNote(String m, double n) {
-        if(!formation.matiereExist(m.toLowerCase())) {
+        if (!formation.matiereExist(m.toLowerCase())) {
             throw new IllegalArgumentException("La matière " + m + " n'est pas dans la formation.");
         }
 
-        if(n < 0 || n > 20) {
+        if (n < 0 || n > 20) {
             throw new IllegalArgumentException("La note doit être comprise entre 0 et 20. (actual: " + n + ")");
         }
 
@@ -63,7 +63,7 @@ public class Etudiant {
     public double getMoyenne(String m) throws Exception {
         Collection<Double> notes = resultats.get(m.toLowerCase());
 
-        if(!formation.matiereExist(m.toLowerCase())) {
+        if (!formation.matiereExist(m.toLowerCase())) {
             throw new IllegalArgumentException("La matière " + m + " n'est pas dans la formation.");
         }
 
@@ -113,4 +113,20 @@ public class Etudiant {
     public String toString() {
         return "Etudiant (" + nip.getNip() + ")";
     }
+
+    @Override
+    public int compareTo(Object o) {
+        if (o instanceof Etudiant) {
+            Etudiant etu2 = (Etudiant) o;
+            int nom;
+            nom = this.nip.getNom().compareTo(etu2.nip.getNom());
+            if (nom == 0) // si les noms sont égaux on regarde les prénoms
+                return this.nip.getPrenom().compareTo(etu2.nip.getPrenom());  // on retourne la diff des prenoms
+            else // si les noms sont différent on return la diff
+                return nom;
+        } else
+            throw new IllegalArgumentException("Le groupe contient autre chose que des étudiants.");
+
+    }
+
 }
