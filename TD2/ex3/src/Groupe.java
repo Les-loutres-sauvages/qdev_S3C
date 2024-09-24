@@ -1,15 +1,16 @@
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.Map;
 
-public class Groupe {
+public class Groupe{
 
-    private Collection<Etudiant> groupe;
+    private ArrayList<Etudiant> groupe;
     private final Formation formation;
 
     public Groupe(Formation f) {
         this.formation = f;
-        this.groupe = new ArrayList<>();
+        this.groupe = new ArrayList<Etudiant>();
     }
 
     public void ajouter(Etudiant e) {
@@ -25,10 +26,16 @@ public class Groupe {
 
     public String toString() {
         String res = "Groupe{groupe=[";
-
+        int i = 0;
         for(Etudiant e : groupe) {
-            res += e.toString() + ", ";
+            if (i == 0) {
+                res += e.toString();
+                i++;
+            }
+            else
+                res += ", " + e.toString() ;
         }
+        res += "]";
         return res;
     }
 
@@ -52,5 +59,23 @@ public class Groupe {
         }
 
         return (somme / groupe.size());
+    }
+
+    /**
+     * c. Ajouter dans la classe Groupe
+     * - la méthode triAlpha qui permet de trier la liste des étudiants du groupe selon l'ordre
+     * alphabétique de leur nom (de A vers Z).
+
+     */
+    public void triAlpha(){
+        Collections.sort(groupe);
+    }
+
+    /**
+     * - la méthode triAntiAlpha qui permet de trier la liste des étudiants du groupe dans
+     * l'ordre inverse de l'ordre alphabétique (de Z vers A).
+     */
+    public void triAntiAlpha(){
+        Collections.sort(groupe, Collections.reverseOrder());
     }
 }
