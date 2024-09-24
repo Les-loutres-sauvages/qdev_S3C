@@ -1,7 +1,4 @@
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Map;
+import java.util.*;
 
 public class Groupe{
 
@@ -79,5 +76,18 @@ public class Groupe{
         Collections.sort(groupe, Collections.reverseOrder());
     }
 
-    //TODO
+    /**
+     * - la méthode triMerite qui permet de trier la liste des étudiants du groupe en fonction de
+     * leur moyenne générale (DESC)
+     */
+    public void TriParMerite() {
+        Collections.sort(groupe, new Comparator<Etudiant>() {
+
+            @Override
+            public int compare(Etudiant e1, Etudiant e2) {
+                return Double.compare(e2.getMoyenneGenerale(), e1.getMoyenneGenerale());
+            }
+        });
+    }
 }
+

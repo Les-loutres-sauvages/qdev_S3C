@@ -16,6 +16,11 @@ public class GroupeTest_Trie {
     public void setUp() {
         form = new Formation(1);
 
+        form.ajouter("math", 6.0);
+        form.ajouter("NSI", 4.0);
+        form.ajouter("francais", 2.0);
+
+
         groupe = new Groupe(form);
 
         etu = new Etudiant("100", "Dupont", "Michel", form);
@@ -23,6 +28,28 @@ public class GroupeTest_Trie {
         etu3 = new Etudiant("102", "Forgeur", "Liam", form);
         etu4 = new Etudiant("103", "Laforge", "Victor", form);
         etu5 = new Etudiant("104", "Forgeur", "Amin", form);
+
+        //ajouter des notes
+        etu.addNote("math", 10);
+        etu.addNote("NSI", 19);
+        etu.addNote("francais", 14);
+
+        etu2.addNote("math", 14);
+        etu2.addNote("NSI", 12);
+        etu2.addNote("francais", 17);
+
+        etu3.addNote("math", 17);
+        etu3.addNote("NSI", 14);
+        etu3.addNote("francais", 14);
+
+        etu4.addNote("math", 10);
+        etu4.addNote("NSI", 19);
+        etu4.addNote("francais", 14);
+
+        etu5.addNote("math", 14);
+        etu5.addNote("NSI", 17);
+        etu5.addNote("francais", 19);
+
 
         groupe.ajouter(etu);
         groupe.ajouter(etu2);
@@ -47,6 +74,13 @@ public class GroupeTest_Trie {
     public void test_tri_AntiAlpha() {
         groupe.triAntiAlpha();
         assertEquals("Groupe{groupe=[Etudiant (103), Etudiant (101), Etudiant (102), Etudiant (104), Etudiant (100)]", groupe.toString());
+    }
+
+
+    @Test
+    public void test_tri_Merite() {
+        groupe.TriParMerite();
+        assertEquals("Groupe{groupe=[Etudiant (104), Etudiant (102), Etudiant (101), Etudiant (100), Etudiant (103)]", groupe.toString());
     }
 
 }
