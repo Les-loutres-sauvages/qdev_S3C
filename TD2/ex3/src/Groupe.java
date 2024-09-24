@@ -31,4 +31,26 @@ public class Groupe {
         }
         return res;
     }
+
+    public double getMoyenneGroupe(String m) throws Exception {
+        if (!formation.matiereExist(m.toLowerCase())) {
+            throw new IllegalArgumentException("La matière " + m + " n'est pas dans la formation.");
+        }
+
+        double somme = 0;
+        for (Etudiant e : groupe) {
+            somme += e.getMoyenne(m);
+        }
+
+        return (somme / groupe.size());
+    }
+
+    public double getMoyenneGeneraleGroupe() throws Exception {
+        double somme = 0;
+        for (Etudiant e : groupe) {
+            somme += e.getMoyenneGenerale();
+        }
+
+        return (somme / groupe.size());
+    }
 }
