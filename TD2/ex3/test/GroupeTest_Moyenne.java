@@ -27,7 +27,7 @@ public class GroupeTest_Moyenne {
         groupe.ajouter(etu1);
         groupe.ajouter(etu2);
 
-        assertEquals(groupe.toString(), "Groupe{groupe=[Etudiant (100), Etudiant (101), ");
+        assertEquals(groupe.toString(), "Groupe{groupe=[Etudiant (100), Etudiant (101)]");
     }
 
     @Test
@@ -37,7 +37,7 @@ public class GroupeTest_Moyenne {
 
         groupe.supprimer(etu1);
 
-        assertEquals(groupe.toString(), "Groupe{groupe=[Etudiant (101), ");
+        assertEquals(groupe.toString(), "Groupe{groupe=[Etudiant (101)]");
     }
 
     @Test
