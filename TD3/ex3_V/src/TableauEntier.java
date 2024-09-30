@@ -19,7 +19,7 @@ public class TableauEntier {
      * @return
      */
     public int valeurA(int l, int c) {
-        return tab[c][l];
+        return tab[l][c];
     }
 
     /**
@@ -28,7 +28,7 @@ public class TableauEntier {
      * @return
      */
     public int getLargeur() {
-        //TODO
+        return tab[0].length;
     }
 
 
@@ -38,7 +38,11 @@ public class TableauEntier {
      * @return
      */
     public int getHauteur() {
-        // TODO
+        return tab.length;
+    }
+
+    public ParcoursLigne iterateurLigne(){
+        return new ParcoursLigne(this);
     }
 }
 
