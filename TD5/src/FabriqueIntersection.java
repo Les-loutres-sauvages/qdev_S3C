@@ -1,6 +1,6 @@
-public class FabriqueIntersection {
+public class FabriqueIntersection implements FabriqueVehicule {
 
-    double probaVoiture, probaBus, probaBicyclette, probaPieton;
+    protected double probaVoiture, probaBus, probaBicyclette, probaPieton;
 
     public FabriqueIntersection(double pourVoiture,
                                 double pourBus,
